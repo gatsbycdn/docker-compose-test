@@ -31,16 +31,16 @@ def ip_generate_site():
     nameandip = { 'sitename': sitename, 'ip': 'ip_addr'}
     return nameandip
 
-def check_if_exists(ip):
+def check_non_exist(ip):
     dns_zone_id = yourownzoneid
     dns_api_url = f"https://api.cloudflare.com/client/v4/zones/{dns_zone_id}/dns_records?content={ip}"
     r = requests.get(dns_api_url, headers = headers)
     js = json.loads(r.text)
     result = js["result"]
     if not result:
-        return False
-    else:
         return True
+    else:
+        return False
 
 nameandip = ip_generate_site()
 hostname = nameandip['sitename'] + '.gatsbycdn.com'
@@ -111,8 +111,6 @@ def reload_caddy(data):
     js = json.loads(res.text)
     print(js)
 
-
-
-if check_if_exists(nameandip['ip']):
+if check_not_exist(nameandip['ip']):
     add_dns_record(zone_id, nameandip['sitename'], nameandip['ip'])
     reload_caddy(Caddyfile)

@@ -23,6 +23,7 @@ services:
         ports: 
             - 443:443
             - 80:80
+            - 2019:2019
         networks:
             - v2net
 

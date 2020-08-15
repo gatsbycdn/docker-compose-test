@@ -121,7 +121,7 @@ def reload_caddy(data):
 
 def get_config():
     api = "http://v2caddy:2019/config/"
-    r = requests.post(api)
+    r = requests.post(api, headers={'Content-Type': 'application/json'})
     res = json.loads(r.text)
     print(res)
 

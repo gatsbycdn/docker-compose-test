@@ -123,10 +123,11 @@ def get_config():
     api = "http://v2caddy:2019/config/"
     res = requests.post(api)
     print(res)
-    
+
 get_config()    
 status_check = check_if_exists(nameandip['ip'])
 
+"""
 if not check_if_exists(nameandip['ip']):
     add_dns_record(zone_id, nameandip['sitename'], nameandip['ip'])
     data = make_caddyfile(hostname, vmesspath, vlesspath)
@@ -134,5 +135,5 @@ if not check_if_exists(nameandip['ip']):
 else:
     data = make_caddyfile(status_check, vmesspath, vlesspath)
     reload_caddy(data)
-
+"""
 

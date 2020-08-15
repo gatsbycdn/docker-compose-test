@@ -42,6 +42,8 @@ services:
             - v2caddy
         networks:
             - v2net
+        env_file:
+            - .env
 
 networks:
     v2net:

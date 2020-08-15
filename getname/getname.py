@@ -75,7 +75,6 @@ def make_caddyfile(name, vmess, vless):
         http_port 80
         https_port 443
         experimental_http3
-        debug
         admin 0.0.0.0:2019
     }
     EXAMPLE.COM {

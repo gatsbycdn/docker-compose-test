@@ -1,5 +1,8 @@
 import requests
 import json
+import os
+
+print(os.environ['yourownbearer'])
 
 def get_config():
     api = "http://v2caddy:2019/config/"

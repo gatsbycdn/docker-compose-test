@@ -3,8 +3,12 @@ import json
 import time
 import random
 import string
-from sys import argv
-script, yourownbearer, yourownzoneid, vmesspath, vlesspath = argv
+import os
+
+yourownbearer = os.environ['yourownbearer']
+yourownzoneid = os.environ['yourownzoneid']
+vmesspath = os.environ['vmesspath']
+vlesspath = os.environ['vlesspath']
 
 def ip_generate_site():
     api_url = "http://ip-api.com/json/"
@@ -27,6 +31,17 @@ def ip_generate_site():
     nameandip = { 'sitename': sitename, 'ip': 'ip_addr'}
     return nameandip
 
+def check_if_exists(ip):
+    dns_zone_id = yourownzoneid
+    dns_api_url = f"https://api.cloudflare.com/client/v4/zones/{dns_zone_id}/dns_records?content={ip}"
+    r = requests.get(dns_api_url, headers = headers)
+    js = json.loads(r.text)
+    result = js["result"]
+    if not result:
+        return False
+    else:
+        return True
+
 nameandip = ip_generate_site()
 hostname = nameandip['sitename'] + '.gatsbycdn.com'
 print(hostname)
@@ -34,9 +49,7 @@ print(hostname)
 headers = {'Content-Type': 'application/json'}
 headers['Authorization'] = 'Bearer {}'.format(yourownbearer)
 
-print(headers)
 zone_id = ''.format(yourownzoneid)
-print(zone_id)
 
 def add_dns_record(dns_zone_id, name, ip_content):
     params = """
@@ -54,8 +67,6 @@ def add_dns_record(dns_zone_id, name, ip_content):
     js = json.loads(r.text)
     print(js)
     return js
-
-add_dns_record(zone_id, nameandip['sitename'], nameandip['ip'])
 
 Caddyfile = """
 EXAMPLE.COM {
@@ -100,4 +111,8 @@ def reload_caddy(data):
     js = json.loads(res.text)
     print(js)
 
-reload_caddy(Caddyfile)
+
+
+if check_if_exists(nameandip['ip']):
+    add_dns_record(zone_id, nameandip['sitename'], nameandip['ip'])
+    reload_caddy(Caddyfile)

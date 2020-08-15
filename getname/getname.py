@@ -46,10 +46,11 @@ nameandip = ip_generate_site()
 hostname = nameandip['sitename'] + '.gatsbycdn.com'
 print(hostname)
 
-headers = {'Content-Type': 'application/json'}
+headers = {}
+headers['Content-Type'] = 'application/json'
 headers['Authorization'] = 'Bearer {}'.format(yourownbearer)
 
-zone_id = ''.format(yourownzoneid)
+zone_id = yourownzoneid
 
 def add_dns_record(dns_zone_id, name, ip_content):
     params = """

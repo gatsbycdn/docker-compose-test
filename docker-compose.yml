@@ -43,3 +43,6 @@ services:
             - v2caddy
         networks:
             - v2net
+
+networks:
+    v2net:

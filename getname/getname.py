@@ -106,7 +106,6 @@ def make_caddyfile(name, vmess, vless):
 
         # HSTS (63072000 seconds)
         header / Strict-Transport-Security "max-age=63072000"
-
     }
     """
 
@@ -128,7 +127,7 @@ def get_config():
 get_config()    
 status_check = check_if_exists(nameandip['ip'])
 
-"""
+
 if not check_if_exists(nameandip['ip']):
     add_dns_record(zone_id, nameandip['sitename'], nameandip['ip'])
     data = make_caddyfile(hostname, vmesspath, vlesspath)
@@ -136,5 +135,6 @@ if not check_if_exists(nameandip['ip']):
 else:
     data = make_caddyfile(status_check, vmesspath, vlesspath)
     reload_caddy(data)
-"""
+
+get_config() 
 

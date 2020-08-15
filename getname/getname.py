@@ -68,7 +68,7 @@ def add_dns_record(dns_zone_id, name, ip_content):
     print(js)
     return js
 
-def make_caddyfile(name, vmess, vless)
+def make_caddyfile(name, vmess, vless):
     Caddyfile = """
     EXAMPLE.COM {
 

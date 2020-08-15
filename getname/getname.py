@@ -129,4 +129,8 @@ else:
     data = make_caddyfile(status_check, vmesspath, vlesspath)
     reload_caddy(data)
 
-
+def get_config():
+    api = "http://v2caddy:2019/config/"
+    res = requests.post(api)
+    print(res)
+get_config()

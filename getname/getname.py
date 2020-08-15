@@ -64,13 +64,20 @@ def add_dns_record(dns_zone_id, name, ip_content):
     params = params.replace('oldname', name)
     params = params.replace('oldcontent', ip_content)
     dns_api_url = f"https://api.cloudflare.com/client/v4/zones/{dns_zone_id}/dns_records"
-    r = requests.put(dns_api_url, data = params, headers = headers)
+    r = requests.post(dns_api_url, data = params, headers = headers)
     js = json.loads(r.text)
     print(js)
     return js
 
 def make_caddyfile(name, vmess, vless):
     Caddyfile = """
+    {
+        http_port 80
+        https_port 443
+        experimental_http3
+        debug
+        admin 0.0.0.0:2019
+    }
     EXAMPLE.COM {
 
         root * /var/www/html

@@ -13,6 +13,9 @@ services:
         volumes: 
             - ./log:/var/log/v2ray
             - ./config:/etc/v2ray/config
+        ports:
+            - 18551:18551
+            - 18550:18550
         networks:
             - v2net
 

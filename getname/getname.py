@@ -28,7 +28,7 @@ def ip_generate_site():
     ip_random = str(random.choice(string.ascii_lowercase)) + str(random.randint(100,999))
     formatter = "{}-{}-{}-{}-{}"
     sitename = formatter.format(ip_string,ip_isp,ip_country,ip_city,ip_random).lower()
-    nameandip = { 'sitename': sitename, 'ip': 'ip_addr'}
+    nameandip = { 'sitename': sitename, 'ip': ip_addr }
     return nameandip
 
 def check_if_exists(ip):

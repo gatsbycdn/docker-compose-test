@@ -8,7 +8,7 @@
         {
             "tag": "lessin",
             "port": 18550,
-            "listen": "v2fly",
+            "listen": "0.0.0.0",
             "protocol": "vless",
             "settings": {
                 "clients": [
@@ -29,8 +29,8 @@
         },
         {
             "tag": "messin",
-            "port": 18551,
-            "listen":"v2fly",
+            "port": "18551",
+            "listen":"0.0.0.0",
             "protocol": "vmess",
             "settings": {
                 "clients": [

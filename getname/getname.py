@@ -95,7 +95,7 @@ Caddyfile = Caddyfile.replace("vmesspath", vmesspath)
 Caddyfile = Caddyfile.replace("vlesspath", vlesspath)
 
 def reload_caddy(data):
-    api = "http://localhost:2019/load"
+    api = "http://v2caddy:2019/load"
     res = requests.post(api, headers={'Content-Type': 'text/caddyfile'}, data=data)
     js = json.loads(res.text)
     print(js)

@@ -1,4 +1,4 @@
-FROM v2fly:v2fly-core
+FROM v2fly/v2fly-core
 LABEL maintainer="nobody"
 ARG vlessuuid
 ARG vmessuuid

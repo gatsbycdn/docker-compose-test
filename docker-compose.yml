@@ -12,9 +12,6 @@ services:
                 - vmesspath=$vmesspath
         volumes: 
             - ./log:/var/log/v2ray
-        ports:
-            - 18550:18550
-            - 18551:18551
         networks:
             - v2net
 
@@ -25,7 +22,6 @@ services:
         ports: 
             - 443:443
             - 80:80
-            - 2019:2019
         networks:
             - v2net
 

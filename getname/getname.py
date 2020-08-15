@@ -90,14 +90,14 @@ def make_caddyfile(name, vmess, vless):
             header Connection *Upgrade*
             header Upgrade websocket
         }
-        reverse_proxy @websockets v2fly:18551
+        reverse_proxy @websockets localhost:18551
 
         @vless {
             path /vlesspath
             header Connection *Upgrade*
             header Upgrade websocket
         }
-        reverse_proxy @vless v2fly:18550
+        reverse_proxy @vless localhost:18550
 
         tls {
             protocols tls1.2 tls1.3

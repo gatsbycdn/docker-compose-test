@@ -40,6 +40,6 @@ services:
                 - vlesspath=$vlesspath
                 - vmesspath=$vmesspath
         depends_on:
-            - caddy
+            - v2caddy
         networks:
             - v2net

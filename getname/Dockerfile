@@ -13,4 +13,4 @@ RUN echo $yourownbearer
 RUN echo $yourownzoneid
 RUN echo $vlesspath
 RUN echo $vmesspath
-CMD ["sh","-c","python getname.py $yourownbearer $yourownzoneid $vlesspath $vmesspath"]
+CMD ["python","test.py"]

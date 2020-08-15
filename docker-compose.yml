@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+
+    v2fly:
+        build:
+            context: ./v2ray
+            args:
+                - vlessuuid=$vlessuuid
+                - vmessuuid=$vmessuuid
+                - vlesspath=$vlesspath
+                - vmesspath=$vmesspath
+        volumes: 
+            - ./log:/var/log/v2ray
+            - ./config:/etc/v2ray/
+        ports:
+            - 18550:18550
+            - 18551:18551
+        networks:
+            - v2net
+
+    v2caddy:
+        image: caddy
+        volumes:
+            - ./caddy:/etc/caddy
+        ports: 
+            - 443:443
+            - 80:80
+            - 2019:2019
+        networks:
+            - v2net
+
+
+    v2py:
+        build:
+            context: ./getname
+            args:
+                - yourownbearer=$yourownbearer
+                - yourownzoneid=$yourownzoneid
+                - vlesspath=$vlesspath
+                - vmesspath=$vmesspath
+        depends_on:
+            - caddy
+        networks:
+            - v2net

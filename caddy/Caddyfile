@@ -1,0 +1,9 @@
+{▾
+	"disabled": false,
+	"listen": "0.0.0.0:2019",
+	"enforce_origin": false,
+	"origins": [""],
+	"config": {
+		"persist": false
+	}
+}

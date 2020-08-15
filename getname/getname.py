@@ -118,8 +118,6 @@ def make_caddyfile(name, vmess, vless):
 def reload_caddy(data):
     api = "http://v2caddy:2019/load"
     res = requests.post(api, headers={'Content-Type': 'text/caddyfile'}, data=data)
-    js = json.loads(res.text)
-    print(js)
 
 status_check = check_if_exists(nameandip['ip'])
 

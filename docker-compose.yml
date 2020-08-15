@@ -12,7 +12,6 @@ services:
                 - vmesspath=$vmesspath
         volumes: 
             - ./log:/var/log/v2ray
-            - ./config:/etc/v2ray/
         ports:
             - 18550:18550
             - 18551:18551

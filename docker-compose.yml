@@ -46,3 +46,4 @@ services:
 
 networks:
     v2net:
+        driver: bridge

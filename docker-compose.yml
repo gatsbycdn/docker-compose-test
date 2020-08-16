@@ -17,7 +17,7 @@ services:
         restart: always
 
     v2caddy:
-        image: caddy
+        image: caddy:alpine
         volumes:
             - ./caddy:/etc/caddy
             - ./html:/var/www/html
@@ -28,6 +28,11 @@ services:
             - v2net
         restart: always
 
+#    v2php:
+#        image: php:fpm-alpine
+#        networks:
+#            -v2net
+#        restart: always
 
     v2py:
         build:
@@ -43,6 +48,8 @@ services:
             - v2net
         env_file:
             - .env
+    
+
 
 networks:
     v2net:

@@ -80,7 +80,7 @@ def make_caddyfile(name, vmess, vless):
     EXAMPLE.COM {
 
         root * /var/www/html
-        php_fastcgi v2php:9000
+        # php_fastcgi v2php:9000
         # When using php-fpm listening via a unix socket:
         # php_fastcgi unix//run/php/phpPHPVERSION-fpm.sock
         file_server

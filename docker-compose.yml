@@ -12,9 +12,9 @@ services:
                 - vmesspath=$vmesspath
         volumes: 
             - ./log:/var/log/v2ray
-            - ./config:/etc/v2ray/config
         networks:
             - v2net
+        restart: always
 
     v2caddy:
         image: caddy
@@ -26,6 +26,7 @@ services:
             - 80:80
         networks:
             - v2net
+        restart: always
 
 
     v2py:

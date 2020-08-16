@@ -30,7 +30,7 @@ services:
 
     v2py:
         build:
-            context: ./getname
+            context: ./v2py
             args:
                 - yourownbearer=$yourownbearer
                 - yourownzoneid=$yourownzoneid
